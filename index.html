@@ -5,71 +5,117 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <meta property="og:title" content="David">
+    <meta property="og:description" content="The protfolio of protfolios">
+    <meta property="og:image" content="stream.PNG">
+    <meta property="og:url" content="https://davidreps.github.io/portfolio/">
+    <meta name="twitter:card" content="summary_large_image">
+
     <title>&#127865;Buy Doge</title>
-    
+    <link rel="stylesheet" href="style.css" />
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css">
     
     <!-- import the webpage's javascript file -->
     <script src="/script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   </head>  
-  <body>
-    <h2>David Reps' protfolio site &#128512; </h2>
-    <nav>
-        <a href="#About">About</a>
-        <a href="#Projects">Projects</a>
-        <a href="#News">News</a>
-        <a href="#Contact">Contact</a>
-        <br>
 
-    </nav>
+  <body>
+    <h2 class="title">David Reps' protfolio site <i class="fas fa-air-freshener"></i></h2>
+    <div class="flex-container">
+      
+          <div><a href="#About">About</a></div>
+          <div><a href="#Projects">Projects</a></div>
+          <div><a href="#News">News</a></div>
+          <div><a href="#Contact">Contact</a></div>
+      
+    </div>
 
     <section id="About"></section>
 
     <h3>About</h3>
 
-    <figure>
-      <img src="assets/face.jpg" alt="david "width="300" height="200">
-      <figcaption>David c. 2019</figcaption>  
- 
+    <div class="row">
 
-    </figure>
-    <p>My mane is David Reps &#128142;&#128588;, I was born in San Luis Obispo California [shout out to the 805]! I am a current senior at Boston College and I like code. 
-      I think the most interesting component of CS is Machine Learning or other AI applications. Web apps are pretty rad too. I think they are cool
-      because we can write some code and create something that can be used by other people. I hope that I can fill this website
-      with functional as well as useful web app in the near future.
-    </p>
-    <br>
+      <div class="col-6">
+        <figure>
+          <img class="pic" src="assets/face.jpg" width="100%">
+          <figcaption>David c. 2019</figcaption>  
+     
+    
+        </figure>
+      </div>
+      <div class="col-6">
+
+        <p>My name is David Reps &#128142;&#128588;, I was born in San Luis Obispo California [shout out to the 805]! I am a current senior at Boston College and I like code. 
+          I think the most interesting component of CS is Machine Learning or other AI applications. Web apps are pretty rad too. I think they are cool
+          because we can write some code and create something that can be used by other people. I hope that I can fill this website
+          with functional as well as useful web app in the near future.
+        </p>
+
+        <br>      
+      </div>
+    </div>
+
 
     <section id="Projects"></section>
     <h3>Projects</h3>
-    <ul>
-      <li><a href="p1.html">Stream Search</a></li>
-      <li><a href="p2.html">Vision Education Foundation</a></li>
-      <li><a href="p3.html">Portfolio</a></li>
-    </ul>
-    <br>
+    <div class="col-4">
+      <ul class="time">
+        <li><a href="p1.html">Stream Search</a></li>
+        <li><a href="p2.html">Vision Education Foundation</a></li>
+        <li><a href="p3.html">Portfolio</a></li>
+      </ul>
+      <br>
+    </div>
+
 
     <section id="News"></section>
     <h3>News</h3>
-    <p>
-      I becane my BC carreer in 2017. <br>
-      I then became a CS major in 2018. <br>
-      I am now a senior as of fall 2020 to graduate in spring 2021 &#127877;<br>
-      2021, I purchased doge coin<br>
-    </p>
+
+    <div class="row">
+
+      <div class="col-8" >
+        <ul class ="time">
+          <li>I began my BC career</li>
+          <li>I then became a CS major</li>
+          <li>I am now a Senior</li>
+          <li>I became a minority share hoder of DOGE</li>
+        </ul>
+      </div>
+      <div class="col-4">
+        <ul class="time">
+          <li>2017</li>
+          <li>2018</li>
+          <li>2021</li>
+          <li>2021</li>
+        </ul>
+      </div>
+      
+    </div>
+  
 
     <br>
 
     <section id="Contact"></section>
+    
     <h3>Contact</h3>
     <p>For business inquiries please contact me via one of below option</p>
     <footer>
-      <ul>
-        <li>Email: Reps@bc.edu</li>
-        <li>Instagram: @bellamafiabonsai</li>
+        <ul>
+          <li>Email: Reps@bc.edu <i class="fab fa-bitcoin"></i></li>
+          <li>Instagram: @bellamafiabonsai</li>
+  
+        </ul>
+        <h3 class="animate__animated animate__infinite animate__bounce animate__delay-2s">Come again soon</h3> 
 
-      </ul>
+
     </footer>
 
 
