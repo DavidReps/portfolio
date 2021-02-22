@@ -1,4 +1,3 @@
-
 fetch('data.json')
 
 .then(response => {
@@ -10,45 +9,22 @@ fetch('data.json')
 .then(data => {
 
   console.log("test");
-  const parameter = new URLSearchParams(window.location.search);
+  const params = new URLSearchParams(window.location.search);
+  // const page = 
 
-  if (parameter.get("project") === null){
-
+  if (params.get("project") === null){
     renderMainPage(data);
-  }else {
-    console.log("hello")
-    console.log(data);
-    // renderNavBar(data.page)
-    renderProjectPage(project)
-  }
-  console.log(data)
-
-
-
-    // find first instantiation of the selector in this case a class
-    // const container = document.querySelector('.projects');
-
-    // const projs = data.projects[0];
-
-    // container.innerHTML = `<div>
-    // <div> ${projs.id}</div>
-    // </div>
-    // `
-    // console.log(container)
-
-    // data.projects.forEach(projects => {
-        
-    // });
-    // console.log(projects[0]);
-    // projects.innerHTML = "<div> hello pepe  </div>"
-
-    // const temp = document.createElement('div');
-    // projects.appendChild(temp);
-    // temp.textContent = "hello";
-    // console.log(projects)
-
-
-
+  } else {
+      console.log("renderProjectPage");
+      let id = params.get("project");
+      console.log(id);
+      if (id === "stream search") {
+        renderProjectPage(data.projects[0]);
+      }
+      else if (id === "Vision Education Foundation") {
+        renderProjectPage(data.projects[1]);
+      }
+    }
 });
 
 
@@ -56,7 +32,7 @@ fetch('data.json')
   function renderMainPage(data){
 
     document.querySelector('.container').innerHTML = `
-    ${renderNavbar('main', Object.keys(data))}
+    ${renderNavbar()}
     ${renderAbout(data.about)}
     ${renderNews(data.news)}
     ${renderProjects(data.projects)}
@@ -66,21 +42,18 @@ fetch('data.json')
 
   }
 
-  function renderNavBar(page){
+  function renderNavbar(page){
     console.log("hi my name davud")
     return `
-    <section id="nav">
     <nav>
-      <div class="flex-container">
-          <div class="nav-item"><a href="#About"> About </a></div>
-          <div class="nav-item"><a href="#projects"> Projects </a></div>
-          <div class="nav-item"><a href="#news"> News</a></div>
-          <div class="nav-item"><a href="#Contact"> Contact </a></div>
-      </div>
-    </nav>
-    </section>
+    <div class="flex-container">
+        <div class="nav-item"><a href="#About">About</a></div>
+        <div class="nav-item"><a href="#projects">Projects</a></div>
+        <div class="nav-item"><a href="#news">News</a></div>
+        <div class="nav-item"><a href="#Contact">Contact</a></div>
+    </div>
+  </nav> 
     `;
-
   }
 
 
@@ -168,6 +141,27 @@ function renderProjectItems(projects){
   }
 
   function renderProjectPage(project){
-
+    document.querySelector('.container').innerHTML=`
+    ${renderNavBar(1)}
+    ${renderSpecificProject(project)}
+    `;
   }
 
+  function renderSpecificProject(project){
+    return `
+    <a href="?project=${d.id}"><strong>${d.title}</strong></a>
+
+    <section>
+    <div>
+
+    <h1>${project.id}</h1>
+    <h3> ${project.title}</h3>
+
+    <h5> ${project.authors}</h5>
+
+    <p> ${project.description}<p>
+    </div>
+    </section>
+
+    `;
+    }
