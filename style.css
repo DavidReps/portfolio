@@ -1,25 +1,33 @@
 .flex-container {
     display: flex;
     width: 100%;
-    background-color: aliceblue;
+    background-color: rgba(104, 165, 223, 0.3) ;
+    opacity: ;
     flex-direction: row; 
-    flex-direction: row;
     justify-content: center; 
-    justify-content: space-evenly;
+    /* justify-content: space-between; */
     position: fixed;
     top: 0;
     left: 0;
+    padding: auto;
   }
 
 .container{
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
 }
-p, h3, ul, li{
+
+
+p, h3, ul, li, nav{
     font-family: 'Open Sans', sans-serif;
+}
+.nav-item{
+    padding: 10px;
 }
 .title{
     font-family: 'Great Vibes', cursive;
-    text-shadow: 2px 2px 5px cyan;
+    font-size: 50px;
+    /* text-shadow: 2px 2px 5px; */
 }
 
 .row{
@@ -30,6 +38,9 @@ p, h3, ul, li{
 [class|=col]{
     flex-basis: 100%;
 
+}
+nav{
+    margin-right: 10px;
 }
 
 @media screen and (min-width: 768px){
@@ -52,7 +63,5 @@ ul.time{
 
 .pic{
     border-radius: 5%;
-    height: 400px;
-    width: 400px;
     object-fit: cover;
 }

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/style.css">
     
     <!-- import the webpage's javascript file -->
-    <script src="/script.js" defer></script>
+    <script src="main.js" defer></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     </head> 
     <body>
-        <h2 class="title"> <a href="index.html">David Reps' protfolio site <i class="fas fa-air-freshener"></i></h2></a>
+        <h2 class="title"> <a href="index.html">David Reps<i class="fas fa-air-freshener"></i></h2></a>
         <div class="flex-container">
           
               <div><a href="#About">About</a></div>
@@ -30,7 +30,9 @@
           
         </div>
 
-        <h2>Stream search</h2>
+        <h2 class="project title">Stream search</h2>
+
+        <a href="?project=${d.id}"><strong>${d.title}</strong></a>
         <div class="row">
 
         <div class="col-6">
