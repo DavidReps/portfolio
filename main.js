@@ -18,7 +18,7 @@ fetch('data.json')
       console.log("renderProjectPage");
       let id = params.get("project");
       console.log(id);
-      if (id === "stream search") {
+      if (id === "Stream Search") {
         renderProjectPage(data.projects[0]);
       }
       else if (id === "Vision Education Foundation") {
@@ -37,20 +37,16 @@ fetch('data.json')
     ${renderNews(data.news)}
     ${renderProjects(data.projects)}
   `;
-  // <div class = "col-12">
-  // </div>
-
   }
 
   function renderNavbar(page){
-    console.log("hi my name davud")
     return `
     <nav>
     <div class="flex-container">
         <div class="nav-item"><a href="#About">About</a></div>
         <div class="nav-item"><a href="#projects">Projects</a></div>
         <div class="nav-item"><a href="#news">News</a></div>
-        <div class="nav-item"><a href="#Contact">Contact</a></div>
+        <div class="nav-item"><a href="/">Home</a></div>
     </div>
   </nav> 
     `;
@@ -142,25 +138,33 @@ function renderProjectItems(projects){
 
   function renderProjectPage(project){
     document.querySelector('.container').innerHTML=`
-    ${renderNavBar(1)}
+    ${renderNavbar(1)}
     ${renderSpecificProject(project)}
     `;
   }
 
   function renderSpecificProject(project){
     return `
-    <a href="?project=${d.id}"><strong>${d.title}</strong></a>
 
     <section>
-    <div>
+      <div class= "col-6">
 
-    <h1>${project.id}</h1>
-    <h3> ${project.title}</h3>
+        <div class ="title">
+          <h3>${project.id}</h3>
+        </div>
+        <h5> ${project.title}</h5>
+      </div>
 
-    <h5> ${project.authors}</h5>
 
-    <p> ${project.description}<p>
-    </div>
+      <div class="row">
+        <div class="col-6">
+        <img class="pic" src="${project.teaser}" width="90%">
+       <br>
+       </div>
+
+       <div class="col-6">
+        <p> ${project.description}<p>
+       </div>
     </section>
 
     `;

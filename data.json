@@ -21,7 +21,7 @@
 
 	"projects":[
 		{
-			"id":"stream search",
+			"id":"Stream Search",
       "title": "Finding where movies can be streamed",
       "authors": "David Reps",
       "teaser": "assets/stream.png",
