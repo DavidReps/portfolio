@@ -1,3 +1,5 @@
+
+let data = null;
 fetch('data.json')
 
 .then(response => {
@@ -6,27 +8,22 @@ fetch('data.json')
 })
 
 
-.then(data => {
-
-  console.log("test");
+.then(_data => {
   const params = new URLSearchParams(window.location.search);
-  // const page = 
+  data = _data;
 
   if (params.get("project") === null){
-    renderMainPage(data);
+    renderMainPage(_data);
   } else {
-      console.log("renderProjectPage");
       let id = params.get("project");
-      console.log(id);
       if (id === "Stream Search") {
-        renderProjectPage(data.projects[0]);
+        renderProjectPage(_data.projects[0]);
       }
       else if (id === "Vision Education Foundation") {
-        renderProjectPage(data.projects[1]);
+        renderProjectPage(_data.projects[1]);
       }
     }
 });
-
 
 
   function renderMainPage(data){
@@ -36,8 +33,15 @@ fetch('data.json')
     ${renderAbout(data.about)}
     ${renderNews(data.news)}
     ${renderProjects(data.projects)}
-  `;
+    ${renderFooter(data)}
+
+  `
+  handler();
+  handlerRadio();
+
+
   }
+
 
   function renderNavbar(page){
     return `
@@ -49,6 +53,7 @@ fetch('data.json')
         <div class="nav-item"><a href="/">Home</a></div>
     </div>
   </nav> 
+  
     `;
   }
 
@@ -79,60 +84,105 @@ fetch('data.json')
   }
 
   function renderNews(news){
-    console.log(news[0].title)
-    console.log(news[0].date)
+  
     return `
     <section id ="news">
       <h1 class = "title">News</h1>
       
-      <div class="row">
-      <div class="col-6">
-      <div class="news-info">
-      <p> ${news[0].title}  </p>      
-      </div>
-      </div>
-      <div class="news-dates">
-      <div class="col-6">
+      <div class="filter">
+	    <label>
+	    <input id = "tic" type="radio" name="filter" value="all" checked>
+    All
+      </label>
 
-      <p> ${news[0].date}  </p>      
-      <br>
-      </div>
+	  <label>
+	    <input id = "tic" type="radio" name="filter" value="economic">
+     Economic
+	    </label>
 
+      <label>
+	    <input id = "tic" type="radio" name="filter" value="academic">
+     Academic
+	    </label>
+
+      <label>
+	    <input id = "tic" type="radio" name="filter" value="leisure">
+     Leisure
+	    </label>
+	
       </div>
+      
+
+      <div class="news-items">
+        ${renderNewsItems(news)}
+      </div>
+     
       </section> `;
 
   }
 
 
+  function renderNewsItems(news){
+
+    return news.map(d=>`
+
+      <div class="row">
+        <div class="col-6">
+          <div class="project-title">
+            <p> ${d.title}</p>
+          </div>
+          </div>
+        <div class="col-6">
+          <p> ${d.date} </p>
+        </div>
+      </div>
+    `).join('');
+  
+    }
+
   function renderProjects(projects){
     return `
     <section id="projects">
         <h1 class="title">Projects</h1>
+
+        <div class="search">
+        <input type="search" name='input' placeholder="Search projects...">
+        </div>
+
         <!-- we will add a filter interface here in the next lab -->
 
         <div class="project-list">
-
             ${renderProjectItems(projects)}
         </div>
-    </section>`;
+    </section>
+    `;
 }
 function renderProjectItems(projects){
 
 	return projects.map(d=>`
+
 	  <div class="row">
       <div class="col-6">
         <div class="project-title">
-          <a href="?project=${d.id}"><strong>${d.title}</strong></a>
+          <a href="?project=${d.id}"><p>${d.title}</p></a>
+          <img class="pic" src="${d.teaser}" width="80%">
+          <br>
+
         </div>
-        <div class="project-authors">
-          ${d.authors}<br>
         </div>
+
+      </br>
 			<div class="col-6">
-        <img class="pic" src="${d.teaser}" width="90%">
+
+        <div class="project-description">
+        <br>
+        <p>${d.description}</p>
+        </div>
+
       </div>
+
 		</div>
 	`).join('');
-
 
   }
 
@@ -169,3 +219,95 @@ function renderProjectItems(projects){
 
     `;
     }
+
+function handler(event){
+
+  let input = document.querySelector("input[type=search]");
+  // const searchResult = this.value;
+
+  input.addEventListener('input', (event)=>{
+    console.log(event.target.value)
+    // console.log(filteredData)
+
+
+
+    const filteredData = data.projects.filter(projects => projects.id.toLowerCase().includes(event.target.value.toLowerCase()));
+    console.log(filteredData)
+
+    document.querySelector('.project-list').innerHTML = renderProjectItems(filteredData);
+    console.log(filteredData)
+  });
+
+}
+
+  // const filteredData = data.projects.filter(project => {
+  //   return project.title, searchResult, project.id.toLowerCase().includes(searchResult.toLowerCase());
+
+  // });
+  // document.querySelector('.project-lisst').innerHTML = renderProjectItems(filteredData);
+
+
+  // document.querySelector(renderProjectItems(filtered));
+
+  // const container = document.querySelector('.container');
+  // container.innerHTML = `
+
+  // ${renderNavbar()}
+  // ${renderProjectItems(filteredData)}
+  // `
+ 
+
+function handlerRadio(event){
+
+  let buttons = document.querySelectorAll('.filter input[name="filter"]');
+  buttons.forEach(cond=>cond.addEventListener('change', function(event){
+    let tag = event.target.value;
+
+    if (tag === 'all'){
+      document.querySelector('.news-items').innerHTML = renderNewsItems(data.news);
+    } else {
+      const filtered = data.news.filter(news =>((news.tags.toLowerCase()===(event.target.value))));
+      document.querySelector('.news-items').innerHTML = renderNewsItems(filtered);
+      console.log(filtered)
+
+    }
+  }));
+}
+
+
+function renderFooter(data){
+  return`
+  <footer>
+  <p>For business inquiries please contact me via one of below option</p>
+
+    <ul>
+      <li>Email: Reps@bc.edu <i class="fab fa-bitcoin"></i></li>
+      <li>Instagram: @bellamafiabonsai</li>
+
+    </ul>
+    <h3 class="animate__animated animate__infinite animate__bounce animate__delay-2s">Come again soon</h3> 
+
+</footer>
+`;
+}
+
+
+// <div class="col-6">
+// <div class="news-info">
+// <p> ${news[0].title}  </p>      
+// <p> ${news[1].title}  </p>      
+// <p> ${news[2].title}  </p>      
+
+// </div>
+// </div>
+// <div class="news-dates">
+// <div class="col-6">
+
+// <p> ${news[0].date}  </p>      
+// <p> ${news[1].date}  </p>      
+// <p> ${news[2].date}  </p>      
+
+// <br>
+// </div>
+
+// </div>

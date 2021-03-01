@@ -14,49 +14,52 @@
 	"news":[
 		{
 			"title": "Began my final semester at Boston College",
-			"date": "Jan, 2021"
+			"date": "Jan, 2021",
+      "tags": "academic"
+		},
+
+    {
+			"title": "I became a minority stake holder in Doge coin ventures",
+			"date": "Feb, 2021",
+      "tags": "economic"
+		},
+
+    {
+			"title": "Began the cultivation of my bonsai garden",
+			"date": "Aug, 2020",
+      "tags": "leisure"
 		}
+
+
 		
 	],
 
 	"projects":[
 		{
 			"id":"Stream Search",
-      "title": "Finding where movies can be streamed",
+      "title": "Stream Search",
       "authors": "David Reps",
       "teaser": "assets/stream.png",
-        "description": "This web app is a platform which allows users to search for movies in order to fin out which streaming service offers them. If a movie is not listed a user can add it themself. Users provide all the website content. Users add movies and then vote on which platform they are availiable to be streamed on. In this fashion movies are updated. Provided a large enough user base the site should demostrate reasonable accuracy (wisdom of crowds)."
+      "description": "This web app is a platform which allows users to search for movies in order to fin out which streaming service offers them. If a movie is not listed a user can add it themself. Users provide all the website content. Users add movies and then vote on which platform they are availiable to be streamed on. In this fashion movies are updated. Provided a large enough user base the site should demostrate reasonable accuracy (wisdom of crowds)."
 		},
 
 
     {
 			"id":"Vision Education Foundation",
-      "title": "Bringing hope to Nepal",
+      "title": "Vision Education Foundation",
       "authors": "David Reps among many others",
       "teaser": "assets/vef.png",
-      "materials": [
-      { 
-          "label": "web app",
-          "path": ""
-        }
-      ],
       "description": "A non-profit founded by current BC students with the aim of serving those most in need in Nepal. With the mission of bringing healthcare, education, and hope to Nepal, the Vision Education Foundation fascilitates numerous outreach programs and is always looking for passionate people."
 		},
 
     {
-			"id":"stream search",
-      "title": "Finding where movies can be streamed",
-      "authors": "David Reps",
+			"id":"Sentiment analysis with LSTM",
+      "title": "Predicting the score of a song",
+      "authors": "David Reps, Gavin Bloom, Ben Clancy",
       "source": "IEEE Transactions on Visualization and Computer Graphics(InfoVis), 2018",
-      "teaser": "assets/stream.png",
+      "teaser": "assets/lstm.png",
       "tags":["Journal", "Technique"],
-      "materials": [
-      { 
-          "label": "web app",
-          "path": ""
-        }
-      ],
-        "description": "This web app is a platform which allows users to search for movies in order to fin out which streaming service offers them. If a movie is not listed a user can add it themself. Users provide all the website content. Users add movies and then vote on which platform they are availiable to be streamed on. In this fashion movies are updated. Provided a large enough user base the site should demostrate reasonable accuracy (wisdom of crowds)."
+      "description": "Contrusted an LSTM to predict how the public may percive a song. Inputing textual reviews of albums we then trained our model to ascertain whihc words are positive, negative or neutral. It is from this analysis that we are able to predict a corresponding score of how well a song may be recireved. In the future we would like to implement it so that it can predict hit songs from comments on platforms like youtube or soundcloud. "
 		}
 		
 	]
