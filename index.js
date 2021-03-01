@@ -1,5 +1,5 @@
 import renderMainPage from './components/MainPage.js';
-import renderProjectPage from './components/Projects.js';
+import {renderProjectPage} from './components/ProjectPage.js';
 
 let data = null;
 fetch('data.json')

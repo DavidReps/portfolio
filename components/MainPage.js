@@ -17,9 +17,7 @@ export default function renderMainPage(data){
 
   `
 
-  document.querySelector("input[type=search]")
-  .addEventListener('input', handler);
-
+  handler();
   news.handlerRadio();
 
   }

@@ -17,7 +17,7 @@ return `
 
     <div class="project-list">
 
-        ${renderProjectItems(_data.projects)}
+        ${renderProjectItems(data.projects)}
     </div>
 </section>
 `;
@@ -52,56 +52,43 @@ export function renderProjectItems(projects){
 
   }
 
-export function renderProjectPage(project){
-    document.querySelector('.container').innerHTML=`
-    ${renderNavbar(1)}
-    ${renderSpecificProject(project)}
-    `;
-}
 
 export function renderSpecificProject(project){
-    return `
+  return `
 
-    <section>
-      <div class= "col-6">
+  <section>
+    <div class= "col-6">
 
-        <div class ="title">
-          <h3>${project.id}</h3>
-        </div>
-        <h5> ${project.title}</h5>
+      <div class ="title">
+        <h3>${project.id}</h3>
       </div>
+      <h5> ${project.title}</h5>
+    </div>
 
 
-      <div class="row">
-        <div class="col-6">
-        <img class="pic" src="${project.teaser}" width="90%">
-       <br>
-       </div>
+    <div class="row">
+      <div class="col-6">
+      <img class="pic" src="${project.teaser}" width="90%">
+     <br>
+     </div>
 
-       <div class="col-6">
-        <p> ${project.description}<p>
-       </div>
-    </section>
+     <div class="col-6">
+      <p> ${project.description}<p>
+     </div>
+  </section>
 
-    `;
-}
+  `;
+  }
 
 export function handler(event){
 
   let input = document.querySelector("input[type=search]");
-  // const searchResult = this.value;
 
   input.addEventListener('input', (event)=>{
-    console.log(event.target.value)
-    // console.log(filteredData)
-
-
-
     const filteredData = data.projects.filter(projects => projects.id.toLowerCase().includes(event.target.value.toLowerCase()));
-    console.log(filteredData)
-
     document.querySelector('.project-list').innerHTML = renderProjectItems(filteredData);
-    console.log(filteredData)
+    console.log(filteredData);
+
   });
 
 }

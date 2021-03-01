@@ -223,19 +223,10 @@ function renderProjectItems(projects){
 function handler(event){
 
   let input = document.querySelector("input[type=search]");
-  // const searchResult = this.value;
 
   input.addEventListener('input', (event)=>{
-    console.log(event.target.value)
-    // console.log(filteredData)
-
-
-
     const filteredData = data.projects.filter(projects => projects.id.toLowerCase().includes(event.target.value.toLowerCase()));
-    console.log(filteredData)
-
     document.querySelector('.project-list').innerHTML = renderProjectItems(filteredData);
-    console.log(filteredData)
   });
 
 }
